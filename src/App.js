@@ -28,7 +28,7 @@ function App() {
     };
 
     try {
-      const response = await fetch('https://your-backend-app-name.azurewebsites.net/addWarden', {
+      const response = await fetch('https://fire-warden-backend-bucye5b4embadfbv.uksouth-01.azurewebsites.net/addWarden', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
