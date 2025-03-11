@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState } from 'react';
 
 function App() {
-  // States to hold input values
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [number, setNumber] = useState('');
@@ -19,9 +18,30 @@ function App() {
     setNumber(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(`First Name: ${firstName}, Last Name: ${lastName}, Number: ${number}`);
+    
+    const wardenData = {
+      staffNumber: number,
+      firstName: firstName,
+      surname: lastName
+    };
+
+    try {
+      const response = await fetch('https://your-backend-app-name.azurewebsites.net/addWarden', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(wardenData)
+      });
+
+      const result = await response.text();
+      alert(result);
+    } catch (error) {
+      console.error('Error submitting data:', error);
+      alert('Failed to submit data');
+    }
   };
 
   return (
