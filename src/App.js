@@ -21,11 +21,11 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    const wardenData = {
-      staffNumber: number,
-      firstName: firstName,
-      surname: lastName
-    };
+    // const wardenData = {
+    //   staffNumber: number,
+    //   firstName: firstName,
+    //   surname: lastName
+    // };
 
     try {
       const response = await fetch('https://fire-warden-backend-bucye5b4embadfbv.uksouth-01.azurewebsites.net/addWarden', {
@@ -33,7 +33,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(wardenData)
+        body: JSON.stringify({staffNumber: 23456, firstName: "Reuben", surname: "Shaw"})
       });
 
       const result = await response.text();
